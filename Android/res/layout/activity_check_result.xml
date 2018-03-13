@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/old_mathematics"
+    android:padding="5dp">
+    <ImageView android:src="@drawable/title"
+        android:contentDescription="@string/app_name"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_margin="5dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="right"
+        android:layout_margin="5dp">
+	    <TextView
+	        android:id="@+id/target"
+	        style="@style/ResultText"
+	        android:layout_marginRight="5pt"/>
+	    <TextView
+	        style="@style/ResultText"
+        	android:text="@string/mission"/>
+	    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="right"
+        android:layout_margin="5dp">
+	    <TextView android:id="@+id/numbers"
+	        style="@style/ResultText"
+        	android:layout_marginRight="5pt"/>
+	    <TextView
+	        style="@style/ResultText"
+        	android:text="@string/numbers"/>
+    </LinearLayout>
+    <TextView android:id="@+id/progress"
+	    style="@style/ResultText"
+        android:layout_width="fill_parent"
+        android:singleLine="false"
+        android:gravity="right"
+        android:layout_margin="5dp"/>
+    <ImageView android:id="@+id/rightImage"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/nachonmeod"
+        android:contentDescription="@string/right"/>
+    <TextView android:id="@+id/wrongText"
+        style="@style/ResultText"
+        android:layout_margin="5dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/wrong"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+        <Button
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onCloseClick"
+            android:textSize="9pt"/>
+    </LinearLayout>
+
+</LinearLayout>

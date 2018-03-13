@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Sketches", "Sketches\Sketches.pyproj", "{794843DD-A70A-4809-92EB-4DAE5547AD79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{69CF107C-98AF-47FC-9F4C-AACB9779ED7B}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Solver", "Solver\Solver.pyproj", "{A9AA6392-A70E-4ABF-8DEE-80A59A3486BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{794843DD-A70A-4809-92EB-4DAE5547AD79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{794843DD-A70A-4809-92EB-4DAE5547AD79}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{794843DD-A70A-4809-92EB-4DAE5547AD79}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{794843DD-A70A-4809-92EB-4DAE5547AD79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{794843DD-A70A-4809-92EB-4DAE5547AD79}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{794843DD-A70A-4809-92EB-4DAE5547AD79}.Release|x86.ActiveCfg = Release|Any CPU
+		{69CF107C-98AF-47FC-9F4C-AACB9779ED7B}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{69CF107C-98AF-47FC-9F4C-AACB9779ED7B}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{69CF107C-98AF-47FC-9F4C-AACB9779ED7B}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{69CF107C-98AF-47FC-9F4C-AACB9779ED7B}.Debug|x86.ActiveCfg = Debug|x86
+		{69CF107C-98AF-47FC-9F4C-AACB9779ED7B}.Debug|x86.Build.0 = Debug|x86
+		{69CF107C-98AF-47FC-9F4C-AACB9779ED7B}.Release|Any CPU.ActiveCfg = Release|x86
+		{69CF107C-98AF-47FC-9F4C-AACB9779ED7B}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{69CF107C-98AF-47FC-9F4C-AACB9779ED7B}.Release|Mixed Platforms.Build.0 = Release|x86
+		{69CF107C-98AF-47FC-9F4C-AACB9779ED7B}.Release|x86.ActiveCfg = Release|x86
+		{69CF107C-98AF-47FC-9F4C-AACB9779ED7B}.Release|x86.Build.0 = Release|x86
+		{A9AA6392-A70E-4ABF-8DEE-80A59A3486BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9AA6392-A70E-4ABF-8DEE-80A59A3486BE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A9AA6392-A70E-4ABF-8DEE-80A59A3486BE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A9AA6392-A70E-4ABF-8DEE-80A59A3486BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9AA6392-A70E-4ABF-8DEE-80A59A3486BE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A9AA6392-A70E-4ABF-8DEE-80A59A3486BE}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

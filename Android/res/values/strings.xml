@@ -1,0 +1,37 @@
+<resources>
+
+    <string name="app_name">פתור זאת</string>
+    
+    <string name="title_activity_game">פתור זאת</string>
+	<string name="plus">+</string>
+	<string name="minus">-</string>
+	<string name="times">&#215;</string>
+	<string name="divide">&#247;</string>
+	
+	<string name="mission">המשימה: להגיע למספר </string>
+	<string name="numbers">מהמספרים </string>
+	<string name="right">נכון מאד!</string>
+	<string name="wrong">לא נכון</string>
+	
+	<string name="newgame">משחק חדש</string>
+	<string name="tryagain">נסיון נוסף</string>
+	
+	<string name="check_result">בדיקת התשובה</string>
+	
+	<string name="exit_game">האם לצאת מהמשחק?</string>
+	<string name="yes">כן</string>
+	<string name="no">לא</string>
+	
+	<string name="menu_exit">סיום</string>
+	<string name="menu_new_game">משחק חדש</string>
+	
+	<string name="level1_short">קל</string>
+	<string name="level1_long">תרגילים קלים</string>
+	<string name="level2_short">בינוני</string>
+	<string name="level2_long">רמה בינונית</string>
+	<string name="level3_short">קשה</string>
+	<string name="level3_long">תרגילים קשים</string>
+	<string name="levels_title">רמת המשחק</string>
+	<string name="choose">שינוי רמה</string>
+	<string name="cancel">ביטול</string>
+</resources>

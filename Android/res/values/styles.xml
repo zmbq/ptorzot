@@ -1,0 +1,35 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="NumberButton" parent="android:style/Widget.Button">
+        <item name="android:minWidth">60dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:onClick">onNumberClick</item>
+        <item name="android:textSize">12pt</item>"
+    </style>
+    
+    <style name="NumberButton.Landscape">
+        <item name="android:textSize">10pt</item>"
+        <item name="android:maxHeight">12pt</item>
+    </style>
+    
+    <style name="OpButton" parent="android:style/Widget.Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:onClick">onOperationClick</item>
+        <item name="android:textSize">14pt</item>
+        <item name="android:layout_weight">25</item>
+    </style>
+
+    <style name="bordered" parent="android:style/Widget.TextView">
+        <item name="android:background">@drawable/rectangle</item>
+    </style>
+    
+    <style name="ResultText" parent="android:style/Widget.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">10pt</item>"
+    </style>
+</resources>

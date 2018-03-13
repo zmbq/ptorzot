@@ -1,0 +1,94 @@
+﻿body
+{
+    background-image: url("../images/egg_shell.png");
+    font-size: 150%;
+    line-height: 150%;
+}
+
+.container
+{
+    width: 760px;
+}
+
+#title
+{
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#exercise
+{
+    font-size: 120%;
+    margin: 20px;
+    text-align: center;
+}
+
+.command_button
+{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.lhs_button, .rhs_button, .ops_button
+{
+    font-size: 18px;
+}
+
+.desc
+{
+    width: 120px;
+    font-size: 14px;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.lhs, .ops, .rhs
+{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#right_answer
+{
+    margin-top: 20px;
+    text-align: center;
+}
+
+#new_game
+{
+    width: 120px;
+    margin: 0px auto;
+}
+
+#overlay
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background-color: lightgray;
+    opacity: 0.7;
+    
+    text-align: center;
+    
+    visibility: hidden;
+    z-index: 10000;
+}
+
+#inside_overlay
+{
+    width: 50%;
+    height: 100px;
+    margin: 0px auto;
+    display: inline-block;
+}
+
+#centering_helper
+{
+    display: inline-block;
+    vertical-align: middle;
+    height:100%;
+}

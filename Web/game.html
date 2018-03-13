@@ -1,0 +1,191 @@
+﻿<!DOCTYPE HTML>
+<html dir="rtl">
+	<head>
+		<title>פתור זאת</title>
+        <link rel="Stylesheet" href="styles/bootstrap.min.css" />
+        <link rel="Stylesheet" href="styles/style.css" />
+        <script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="scripts/styling.js"></script>
+        <script type="text/javascript" src="scripts/rowaccess.js"></script>
+        <script type="text/javascript" src="scripts/game.js"></script>
+	</head>
+	<body>
+        <div class="container">
+            <div id="title">
+                <img src="images/ptorzot.png" />
+            </div>
+            <div id="exercise">
+                <span title="should you decide to accept it">המשימה: להגיע ל-</span>
+                <span id="target">&nbsp;</span>
+                <span>מהמספרים</span>
+                <span id="numbers" dir="ltr">&nbsp;</span>
+            </div>
+            <div id="scratch_pad">
+                <table dir="ltr">
+                    <tbody>
+                        <tr class="scratch_row" id="row5">
+                            <td class="lhs" id="lhs5">
+                                <div class="btn-group">
+                                    <input type="button" class="lhs_button btn" id="lhs5_1"/>
+                                    <input type="button" class="lhs_button btn" id="lhs5_2"/>
+                                    <input type="button" class="lhs_button btn" id="lhs5_3"/>
+                                    <input type="button" class="lhs_button btn" id="lhs5_4"/>
+                                    <input type="button" class="lhs_button btn" id="lhs5_5"/>
+                                </div>
+                            </td>
+                            <td class="ops" id="ops5">
+                                <div class="btn-group">
+                                    <input type="button" class="ops_button btn" id="ops5_a" value="+" />
+                                    <input type="button" class="ops_button btn" id="ops5_s" value="-" />
+                                    <input type="button" class="ops_button btn" id="ops5_m" value="&times;" />
+                                    <input type="button" class="ops_button btn" id="ops5_d" value="&divide;" />
+                                </div>
+                            </td>
+                            <td class="rhs" id="rhs5">
+                                <div class="btn-group">
+                                    <input type="button" class="rhs_button btn" id="rhs5_1"/>
+                                    <input type="button" class="rhs_button btn" id="rhs5_2"/>
+                                    <input type="button" class="rhs_button btn" id="rhs5_3"/>
+                                    <input type="button" class="rhs_button btn" id="rhs5_4"/>
+                                    <input type="button" class="rhs_button btn" id="rhs5_5"/>
+                                </div>
+                            </td>
+                            <td class="desc" id="desc5">&nbsp</td>
+                            <td class="commands" id="cmd5">
+                                <div class="btn-group">
+                                    <button class="command_button btn btn-inverse" id="cancel5">
+                                        &times;
+                                    </button>
+                                    <button class="command_button btn btn-inverse" id="hint5">
+                                        ?
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="scratch_row" id="row4">
+                            <td class="lhs" id="lhs4">
+                                <div class="btn-group">
+                                    <input type="button" class="lhs_button btn" id="lhs4_1"/>
+                                    <input type="button" class="lhs_button btn" id="lhs4_2"/>
+                                    <input type="button" class="lhs_button btn" id="lhs4_3"/>
+                                    <input type="button" class="lhs_button btn" id="lhs4_4"/>
+                                </div>
+                            </td>
+                            <td class="ops" id="ops4">
+                                <div class="btn-group">
+                                    <input type="button" class="ops_button btn" id="ops4_a" value="+" />
+                                    <input type="button" class="ops_button btn" id="ops4_s" value="-" />
+                                    <input type="button" class="ops_button btn" id="ops4_m" value="&times;" />
+                                    <input type="button" class="ops_button btn" id="ops4_d" value="&divide;" />
+                                </div>
+                            </td>
+                            <td class="rhs" id="rhs4">
+                                <div class="btn-group">
+                                    <input type="button" class="rhs_button btn" id="rhs4_1"/>
+                                    <input type="button" class="rhs_button btn" id="rhs4_2"/>
+                                    <input type="button" class="rhs_button btn" id="rhs4_3"/>
+                                    <input type="button" class="rhs_button btn" id="rhs4_4"/>
+                                </div>
+                            </td>
+                            <td class="desc" id="desc4">&nbsp</td>
+                            <td class="commands" id="cmd4">
+                                <div class="btn-group">
+                                    <button class="command_button btn btn-inverse" id="cancel4">
+                                        &times;
+                                    </button>
+                                    <button class="command_button btn btn-inverse" id="hint4">
+                                        ?
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="scratch_row" id="row3">
+                            <td class="lhs" id="lhs3">
+                                <div class="btn-group">
+                                    <input type="button" class="lhs_button btn" id="lhs3_1"/>
+                                    <input type="button" class="lhs_button btn" id="lhs3_2"/>
+                                    <input type="button" class="lhs_button btn" id="lhs3_3"/>
+                                </div>
+                            </td>
+                            <td class="ops" id="ops3">
+                                <div class="btn-group">
+                                    <input type="button" class="ops_button btn" id="ops3_a" value="+" />
+                                    <input type="button" class="ops_button btn" id="ops3_s" value="-" />
+                                    <input type="button" class="ops_button btn" id="ops3_m" value="&times;" />
+                                    <input type="button" class="ops_button btn" id="ops3_d" value="&divide;" />
+                                </div>
+                            </td>
+                            <td class="rhs" id="rhs3">
+                                <div class="btn-group">
+                                    <input type="button" class="rhs_button btn" id="rhs3_1"/>
+                                    <input type="button" class="rhs_button btn" id="rhs3_2"/>
+                                    <input type="button" class="rhs_button btn" id="rhs3_3"/>
+                                </div>
+                            </td>
+                            <td class="desc" id="desc3">&nbsp</td>
+                            <td class="commands" id="cmd3">
+                                <div class="btn-group">
+                                    <button class="command_button btn btn-inverse" id="cancel3">
+                                        &times;
+                                    </button>
+                                    <button class="command_button btn btn-inverse" id="hint3">
+                                        ?
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="scratch_row" id="row2">
+                            <td class="lhs" id="lhs2">
+                                <div class="btn-group">
+                                    <input type="button" class="lhs_button btn" id="lhs2_1"/>
+                                    <input type="button" class="lhs_button btn" id="lhs2_2"/>
+                                </div>
+                            </td>
+                            <td class="ops" id="ops2">
+                                <div class="btn-group">
+                                    <input type="button" class="ops_button btn" id="ops2_a" value="+" />
+                                    <input type="button" class="ops_button btn" id="ops2_s" value="-" />
+                                    <input type="button" class="ops_button btn" id="ops2_m" value="&times;" />
+                                    <input type="button" class="ops_button btn" id="ops2_d" value="&divide;" />
+                                </div>
+                            </td>
+                            <td class="rhs" id="rhs2">
+                                <div class="btn-group">
+                                    <input type="button" class="rhs_button btn" id="rhs2_1"/>
+                                    <input type="button" class="rhs_button btn" id="rhs2_2"/>
+                                </div>
+                            </td>
+                            <td class="desc" id="desc2">&nbsp</td>
+                            <td class="commands" id="cmd2">
+                                <div class="btn-group">
+                                    <button class="command_button btn btn-inverse" id="cancel2">
+                                        &times;
+                                    </button>
+                                    <button class="command_button btn btn-inverse" id="hint2">
+                                        ?
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="result_row" id="result_row">
+                            <td id="result" colspan="5">
+                                <div id="right_answer">
+                                    <img src="images/nachonmeod.png"></img>
+                                    <br />
+                                    <input type="button" class="btn btn-success" id="new_game" value="משחק חדש" onclick="onNewGame()"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="overlay">
+            <div id="inside_overlay" dir="rtl">
+                <img src="images/ajax-loader.gif" ></img>
+                <p>מחפש תשובה...</p>
+            </div>
+            <div id="centering_helper"></div>
+        </div>
+	</body>
+</html>

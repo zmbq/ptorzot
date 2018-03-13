@@ -1,0 +1,29 @@
+Things left to do in the Android project, in no particular order
+
+Essence:
+
++++ Override the back button, instead of the custom button.
++++ Add a menu with 'Exit' (because Back means something else)
++++ Fix the game behavior when 'try again' is clicked.
++++ Add a 'new game' to the menu.
++++ Invoke 'new game' by shaking.
++++ Make the buzzer really buzz
+
+
+UI:
+
++++ Fix the location of buttons when Back is clicked
++++ Change button width to fit entire content
++++ Change 4 button table to a 4 button row with bigger fonts
++++ Add a frame to scratch-pad
++++ Create landscape layout
++++ Add a slightly paperish background of a Machberet Heshbon
++++ Make the Check Result page a lot nicer
++++ Fix RTL looking problems in check answers
++++ Create a decent launch icon
+
+Future additions:
+
+- Change random number generator - too many repeated numbers
+- Let the game calculate the correct result itself (use web service first)
+- Add an easier mode, where the intermediate results are displayed
