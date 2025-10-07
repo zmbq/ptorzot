@@ -12,7 +12,7 @@ const STORAGE_KEY = 'ptorzot_game_state';
 /**
  * Load game state from localStorage
  */
-function loadGameState(): GameState | null {
+function loadGameState(): GameState {
   try {
     const stored = storage.get(STORAGE_KEY);
     if (stored) {
@@ -21,19 +21,16 @@ function loadGameState(): GameState | null {
   } catch (error) {
     console.error('Failed to load game state:', error);
   }
-  return null;
+  // If no stored state or error, create a new game with default level (Easy)
+  return createNewGame(GameLevel.Easy);
 }
 
 /**
  * Save game state to localStorage
  */
-function saveGameState(state: GameState | null): void {
+function saveGameState(state: GameState): void {
   try {
-    if (state) {
-      storage.set(STORAGE_KEY, state.toJSON());
-    } else {
-      storage.remove(STORAGE_KEY);
-    }
+    storage.set(STORAGE_KEY, state.toJSON());
   } catch (error) {
     console.error('Failed to save game state:', error);
   }
@@ -44,7 +41,7 @@ function saveGameState(state: GameState | null): void {
  */
 function createGameStore() {
   const initialState = loadGameState();
-  const { subscribe, set, update } = writable<GameState | null>(initialState);
+  const { subscribe, set, update } = writable<GameState>(initialState);
 
   return {
     subscribe,
@@ -63,8 +60,6 @@ function createGameStore() {
      */
     addPlay(first: number, second: number, op: Operation): void {
       update((state) => {
-        if (!state) return state;
-        
         try {
           state.addPlay(first, second, op);
           saveGameState(state);
@@ -81,8 +76,6 @@ function createGameStore() {
      */
     undo(): void {
       update((state) => {
-        if (!state) return state;
-        
         state.undoLastPlay();
         saveGameState(state);
         return state;
@@ -94,8 +87,6 @@ function createGameStore() {
      */
     reset(): void {
       update((state) => {
-        if (!state) return state;
-        
         state.reset();
         saveGameState(state);
         return state;
@@ -103,11 +94,12 @@ function createGameStore() {
     },
 
     /**
-     * Clear the game state
+     * Clear the game state and start a new game
      */
     clear(): void {
-      set(null);
-      saveGameState(null);
+      const newState = createNewGame(GameLevel.Easy);
+      set(newState);
+      saveGameState(newState);
     },
 
     /**
@@ -129,54 +121,54 @@ export const gameStore = createGameStore();
  * Derived store: Current numbers
  */
 export const currentNumbers = derived(gameStore, ($game) => {
-  return $game?.getCurrentNumbers() || [];
+  return $game.getCurrentNumbers();
 });
 
 /**
  * Derived store: Current result (if game is down to one number)
  */
 export const currentResult = derived(gameStore, ($game) => {
-  return $game?.getCurrentResult();
+  return $game.getCurrentResult();
 });
 
 /**
  * Derived store: Is the game solved?
  */
 export const isSolved = derived(gameStore, ($game) => {
-  return $game?.isSolved() || false;
+  return $game.isSolved();
 });
 
 /**
  * Derived store: Can undo?
  */
 export const canUndo = derived(gameStore, ($game) => {
-  return ($game?.plays.length || 0) > 0;
+  return $game.plays.length > 0;
 });
 
 /**
  * Derived store: Number of plays made
  */
 export const playCount = derived(gameStore, ($game) => {
-  return $game?.plays.length || 0;
+  return $game.plays.length;
 });
 
 /**
  * Derived store: Target number
  */
 export const targetNumber = derived(gameStore, ($game) => {
-  return $game?.target;
+  return $game.target;
 });
 
 /**
  * Derived store: Current difficulty level
  */
 export const currentLevel = derived(gameStore, ($game) => {
-  return $game?.level;
+  return $game.level;
 });
 
 /**
  * Derived store: Plays made in current game
  */
 export const plays = derived(gameStore, ($game) => {
-  return $game?.plays || [];
+  return $game.plays;
 });
