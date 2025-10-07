@@ -17,17 +17,22 @@
 
   /** Format a single play for display */
   function formatPlay(play: OnePlay): string {
-    // Get the actual number values from the indices
-    const num1 = getPrintedNumber(play.numbersPre[play.first]);
-    const num2 = getPrintedNumber(play.numbersPre[play.second]);
-    const op = getOpString(play.op);
-    
-    // The result is at index 'first' in numbersPost, BUT if second < first,
-    // then after removing second, the first index shifts down by 1
-    const resultIndex = play.second < play.first ? play.first - 1 : play.first;
-    const result = getPrintedNumber(play.numbersPost[resultIndex]);
-    
-    return `${num1} ${op} ${num2} = ${result}`;
+    try {
+      // Get the actual number values from the indices
+      const num1 = getPrintedNumber(play.numbersPre[play.first]);
+      const num2 = getPrintedNumber(play.numbersPre[play.second]);
+      const op = getOpString(play.op);
+      
+      // The result is at index 'first' in numbersPost, BUT if second < first,
+      // then after removing second, the first index shifts down by 1
+      const resultIndex = play.second < play.first ? play.first - 1 : play.first;
+      const result = getPrintedNumber(play.numbersPost[resultIndex]);
+      
+      return `${num1} ${op} ${num2} = ${result}`;
+    } catch (error) {
+      console.error('formatPlay error:', error, play);
+      return 'Error formatting play';
+    }
   }
 </script>
 
@@ -52,9 +57,12 @@
     background: white;
     border-radius: var(--border-radius-lg);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: var(--spacing-md);
-    max-height: 200px;
-    overflow-y: auto;
+    padding: var(--spacing-sm);
+    
+    /* Let it grow to fit content, up to max */
+    display: flex;
+    flex-direction: column;
+    max-height: 200px; /* Maximum height */
     
     /* Responsive width */
     width: 100%;
@@ -64,29 +72,37 @@
   .history-title {
     /* Typography */
     font-family: var(--font-family);
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-sm);
     font-weight: 600;
     color: var(--color-text-secondary);
-    margin: 0 0 var(--spacing-sm) 0;
+    margin: 0 0 var(--spacing-xs) 0;
     text-align: center;
     direction: rtl;
     
     /* Border */
-    padding-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
     border-bottom: 1px solid #e0e0e0;
+    
+    /* Don't shrink */
+    flex-shrink: 0;
   }
 
   .history-list {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xs);
+    
+    /* Allow scrolling */
+    overflow-y: auto;
+    flex: 1 1 auto;
+    min-height: 0;
   }
 
   .history-item {
     /* Layout */
     display: flex;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-xs) var(--spacing-sm);
+    gap: var(--spacing-xs);
+    padding: 4px var(--spacing-xs);
     border-radius: var(--border-radius-sm);
     background: #f5f5f5;
     transition: background 0.2s ease;
@@ -94,7 +110,7 @@
     
     /* Typography */
     font-family: var(--font-family);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
   }
 
   .history-item:hover {
@@ -121,28 +137,27 @@
   }
 
   /* Scrollbar styling */
-  .history-display::-webkit-scrollbar {
+  .history-list::-webkit-scrollbar {
     width: 8px;
   }
 
-  .history-display::-webkit-scrollbar-track {
+  .history-list::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: var(--border-radius-sm);
   }
 
-  .history-display::-webkit-scrollbar-thumb {
+  .history-list::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: var(--border-radius-sm);
   }
 
-  .history-display::-webkit-scrollbar-thumb:hover {
+  .history-list::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
 
   /* Responsive */
   @media (max-width: 480px) {
     .history-display {
-      max-height: 150px;
       padding: var(--spacing-sm);
     }
 

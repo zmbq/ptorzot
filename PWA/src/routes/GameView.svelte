@@ -126,22 +126,23 @@
     handleNewGame();
   }
 
-  /** Calculate circular position for number buttons */
+  /** Calculate elliptical position for number buttons */
   function getCircularPosition(index: number, total: number): { x: number; y: number } {
-    // Center of the circle
+    // Center of the ellipse
     const centerX = 50;
     const centerY = 50;
     
-    // Radius as percentage
-    const radius = 35;
+    // Radii as percentage - wider horizontally (radiusX) than vertically (radiusY)
+    const radiusX = 40; // Horizontal radius
+    const radiusY = 30; // Vertical radius (smaller for ellipse)
     
     // Start angle from top and go clockwise
     const startAngle = -Math.PI / 2; // -90 degrees (top)
     const angleStep = (2 * Math.PI) / total;
     const angle = startAngle + index * angleStep;
     
-    const x = centerX + radius * Math.cos(angle);
-    const y = centerY + radius * Math.sin(angle);
+    const x = centerX + radiusX * Math.cos(angle);
+    const y = centerY + radiusY * Math.sin(angle);
     
     return { x, y };
   }
@@ -208,10 +209,12 @@
     />
   </div>
 
-  <!-- History Display -->
-  {#if $plays.length > 0}
-    <HistoryDisplay plays={$plays} />
-  {/if}
+  <!-- History Display (flexible scrollable area) -->
+  <div class="history-wrapper">
+    {#if $plays.length > 0}
+      <HistoryDisplay plays={$plays} />
+    {/if}
+  </div>
 
   <!-- Action Buttons -->
   <div class="actions-container">
@@ -253,17 +256,18 @@
 
 <style>
   .game-view {
-    /* Full viewport */
-    min-height: 100vh;
-    min-height: 100dvh;
+    /* Full viewport with exact height */
+    height: 100vh;
+    height: 100dvh;
+    box-sizing: border-box; /* Include padding in height calculation */
     
     /* Layout */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-xl);
-    padding: var(--spacing-lg);
-    padding-top: max(var(--spacing-lg), env(safe-area-inset-top));
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    padding-top: max(var(--spacing-sm), env(safe-area-inset-top));
     padding-bottom: max(var(--spacing-lg), env(safe-area-inset-bottom));
     
     /* Background */
@@ -272,14 +276,19 @@
     /* Prevent text selection */
     user-select: none;
     -webkit-user-select: none;
+    
+    /* Prevent overflow - everything must fit */
+    overflow: hidden;
   }
 
   .numbers-container {
-    /* Container for circular layout */
+    /* Container for elliptical layout - wider than tall */
     position: relative;
-    width: min(90vw, 400px);
-    height: min(90vw, 400px);
-    margin: var(--spacing-xl) 0;
+    width: min(80vw, 400px);
+    height: min(40vw, 180px);
+    max-height: 180px;
+    margin: 0;
+    flex-shrink: 0;
   }
 
   .number-position {
@@ -291,51 +300,80 @@
   .operations-container {
     /* Horizontal row of operation buttons */
     display: flex;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
     justify-content: center;
     flex-wrap: wrap;
     max-width: 400px;
+    flex-shrink: 0;
+  }
+
+  .history-wrapper {
+    /* Flexible container that grows to fit history */
+    width: 100%;
+    max-width: 400px;
+    min-height: 0;
+    flex: 0 1 auto; /* Don't grow beyond content size */
+    
+    /* Let content flow naturally */
+    overflow: visible;
   }
 
   .actions-container {
     /* Action buttons at bottom */
     display: flex;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
     justify-content: center;
     flex-wrap: wrap;
     max-width: 600px;
     width: 100%;
+    flex-shrink: 0;
+    
+    /* Push to bottom but don't add extra margin (padding is on parent) */
     margin-top: auto;
   }
 
   /* Responsive */
   @media (max-width: 480px) {
     .game-view {
-      gap: var(--spacing-md);
-      padding: var(--spacing-md);
+      gap: var(--spacing-xs);
+      padding: var(--spacing-xs);
+      padding-bottom: max(var(--spacing-md), env(safe-area-inset-bottom));
     }
 
     .numbers-container {
-      width: min(85vw, 350px);
-      height: min(85vw, 350px);
+      width: min(75vw, 350px);
+      height: min(38vw, 160px);
+      max-height: 160px;
     }
 
     .operations-container {
-      gap: var(--spacing-sm);
+      gap: var(--spacing-xs);
     }
 
     .actions-container {
-      gap: var(--spacing-sm);
+      gap: var(--spacing-xs);
+    }
+
+    .history-wrapper {
+      max-height: 120px;
     }
   }
 
   @media (max-height: 700px) {
     .game-view {
-      gap: var(--spacing-md);
+      gap: var(--spacing-xs);
+      padding: var(--spacing-xs);
+      padding-bottom: max(var(--spacing-md), env(safe-area-inset-bottom));
     }
 
     .numbers-container {
-      margin: var(--spacing-md) 0;
+      width: min(75vw, 380px);
+      height: min(38vw, 150px);
+      max-height: 150px;
+    }
+
+    .history-wrapper {
+      max-height: 100px;
     }
   }
 </style>
