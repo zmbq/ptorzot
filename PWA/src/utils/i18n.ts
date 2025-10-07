@@ -39,7 +39,9 @@ export type TranslationKey =
   | 'level3_long'
   | 'levels_title'
   | 'choose'
-  | 'cancel';
+  | 'cancel'
+  | 'historyTitle'
+  | 'undo';
 
 /**
  * Translation dictionary
@@ -77,6 +79,8 @@ const he: Translations = {
   levels_title: 'רמת המשחק',
   choose: 'שינוי רמה',
   cancel: 'ביטול',
+  historyTitle: 'היסטוריית מהלכים',
+  undo: 'בטל מהלך',
 };
 
 /**
@@ -110,6 +114,8 @@ const en: Translations = {
   levels_title: 'Game Level',
   choose: 'Change Level',
   cancel: 'Cancel',
+  historyTitle: 'Move History',
+  undo: 'Undo Move',
 };
 
 /**
