@@ -48,8 +48,8 @@
 <style>
   .number-button {
     /* Circular button */
-    width: var(--button-size, 65px);
-    height: var(--button-size, 65px);
+    width: var(--button-size, 70px);
+    height: var(--button-size, 70px);
     border-radius: 50%;
     
     /* Reset default button styles */
@@ -66,7 +66,7 @@
     
     /* Typography */
     font-family: var(--font-family);
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
     font-weight: 700;
     
     /* Interaction */
@@ -138,15 +138,15 @@
   /* Responsive sizing */
   @media (max-width: 768px) {
     .number-button {
-      --button-size: 60px;
-      font-size: var(--font-size-md);
+      --button-size: 65px;
+      font-size: var(--font-size-lg);
     }
   }
 
   @media (max-width: 480px) {
     .number-button {
-      --button-size: 55px;
-      font-size: var(--font-size-sm);
+      --button-size: 58px;
+      font-size: var(--font-size-md);
     }
   }
 </style>

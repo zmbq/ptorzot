@@ -49,8 +49,8 @@
 <style>
   .operation-button {
     /* Rectangular button */
-    width: var(--op-button-width, 50px);
-    height: var(--op-button-height, 50px);
+    width: var(--op-button-width, 55px);
+    height: var(--op-button-height, 55px);
     border-radius: var(--border-radius-md);
     
     /* Reset default button styles */
@@ -67,7 +67,7 @@
     
     /* Typography */
     font-family: var(--font-family);
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-xxl);
     font-weight: 700;
     
     /* Interaction */
@@ -139,17 +139,17 @@
   /* Responsive sizing */
   @media (max-width: 768px) {
     .operation-button {
-      --op-button-width: 48px;
-      --op-button-height: 48px;
-      font-size: var(--font-size-lg);
+      --op-button-width: 52px;
+      --op-button-height: 52px;
+      font-size: var(--font-size-xl);
     }
   }
 
   @media (max-width: 480px) {
     .operation-button {
-      --op-button-width: 45px;
-      --op-button-height: 45px;
-      font-size: var(--font-size-md);
+      --op-button-width: 48px;
+      --op-button-height: 48px;
+      font-size: var(--font-size-lg);
     }
   }
 </style>

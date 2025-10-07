@@ -61,12 +61,12 @@
       0 4px 12px rgba(0, 0, 0, 0.15),
       inset 0 1px 0 rgba(255, 255, 255, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: var(--spacing-sm);
+    padding: clamp(0.5rem, 2vh, 0.75rem);
     
     /* Let it grow to fit content, up to max */
     display: flex;
     flex-direction: column;
-    max-height: 200px; /* Maximum height */
+    max-height: min(25vh, 200px); /* Responsive max based on viewport */
     
     /* Responsive width */
     width: 100%;

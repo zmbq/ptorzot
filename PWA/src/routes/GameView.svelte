@@ -265,10 +265,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-sm);
-    padding-top: max(var(--spacing-sm), env(safe-area-inset-top));
-    padding-bottom: max(var(--spacing-lg), env(safe-area-inset-bottom));
+    justify-content: flex-start; /* Align to top, no extra space */
+    gap: clamp(0.5rem, 1.5vh, 0.75rem); /* Smaller responsive gap */
+    padding: clamp(0.5rem, 1.5vh, 0.75rem);
+    padding-top: max(clamp(0.5rem, 1.5vh, 0.75rem), env(safe-area-inset-top));
+    padding-bottom: max(clamp(1rem, 2vh, 1.5rem), env(safe-area-inset-bottom));
     
     /* Background */
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -285,8 +286,7 @@
     /* Container for elliptical layout - wider than tall */
     position: relative;
     width: min(80vw, 400px);
-    height: min(40vw, 180px);
-    max-height: 180px;
+    height: min(35vh, 180px); /* Use vh for better mobile scaling */
     margin: 0;
     flex-shrink: 0;
   }
@@ -308,11 +308,14 @@
   }
 
   .history-wrapper {
-    /* Flexible container that grows to fit history */
+    /* Flexible container - size to content only */
     width: 100%;
     max-width: 400px;
     min-height: 0;
-    flex: 0 1 auto; /* Don't grow beyond content size */
+    flex: 0 0 auto; /* Don't grow or shrink, just fit content */
+    
+    /* Add small top margin for spacing */
+    margin-top: clamp(0.5rem, 2vh, 1rem);
     
     /* Let content flow naturally */
     overflow: visible;
@@ -321,14 +324,14 @@
   .actions-container {
     /* Action buttons at bottom */
     display: flex;
-    gap: var(--spacing-sm);
+    gap: clamp(0.25rem, 1vh, 0.75rem);
     justify-content: center;
     flex-wrap: wrap;
     max-width: 600px;
     width: 100%;
     flex-shrink: 0;
     
-    /* Push to bottom but don't add extra margin (padding is on parent) */
+    /* Push to bottom with minimal margin */
     margin-top: auto;
   }
 
@@ -341,9 +344,8 @@
     }
 
     .numbers-container {
-      width: min(75vw, 350px);
-      height: min(38vw, 160px);
-      max-height: 160px;
+      width: min(85vw, 350px);
+      height: min(30vh, 160px);
     }
 
     .operations-container {
@@ -352,10 +354,6 @@
 
     .actions-container {
       gap: var(--spacing-xs);
-    }
-
-    .history-wrapper {
-      max-height: 120px;
     }
   }
 
@@ -367,13 +365,13 @@
     }
 
     .numbers-container {
-      width: min(75vw, 380px);
-      height: min(38vw, 150px);
-      max-height: 150px;
+      height: min(25vh, 150px);
     }
-
-    .history-wrapper {
-      max-height: 100px;
+  }
+  
+  @media (max-height: 600px) {
+    .numbers-container {
+      height: min(22vh, 130px);
     }
   }
 </style>

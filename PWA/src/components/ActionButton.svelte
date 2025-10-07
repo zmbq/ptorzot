@@ -54,8 +54,8 @@
 <style>
   .action-button {
     /* Sizing */
-    min-width: 100px;
-    height: 40px;
+    min-width: 110px;
+    height: 44px;
     padding: 0 var(--spacing-md);
     
     /* Reset default button styles */
@@ -70,7 +70,7 @@
     
     /* Typography */
     font-family: var(--font-family);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-md);
     font-weight: 600;
     color: var(--color-text-light);
     
