@@ -54,9 +54,13 @@
 <style>
   .history-display {
     /* Layout */
-    background: white;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+    backdrop-filter: blur(10px);
     border-radius: var(--border-radius-lg);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: var(--spacing-sm);
     
     /* Let it grow to fit content, up to max */
@@ -74,14 +78,14 @@
     font-family: var(--font-family);
     font-size: var(--font-size-sm);
     font-weight: 600;
-    color: var(--color-text-secondary);
+    color: rgba(255, 255, 255, 0.95);
     margin: 0 0 var(--spacing-xs) 0;
     text-align: center;
     direction: rtl;
     
     /* Border */
     padding-bottom: var(--spacing-xs);
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     
     /* Don't shrink */
     flex-shrink: 0;
@@ -104,7 +108,7 @@
     gap: var(--spacing-xs);
     padding: 4px var(--spacing-xs);
     border-radius: var(--border-radius-sm);
-    background: #f5f5f5;
+    background: rgba(255, 255, 255, 0.15);
     transition: background 0.2s ease;
     direction: rtl;
     
@@ -114,7 +118,7 @@
   }
 
   .history-item:hover {
-    background: #eeeeee;
+    background: rgba(255, 255, 255, 0.25);
   }
 
   .play-number {
@@ -124,13 +128,13 @@
     
     /* Typography */
     font-weight: 600;
-    color: var(--color-text-secondary);
+    color: rgba(255, 255, 255, 0.8);
   }
 
   .play-formula {
     /* Typography */
     font-family: 'Courier New', monospace;
-    color: var(--color-text-primary);
+    color: rgba(255, 255, 255, 0.95);
     flex: 1;
     direction: ltr;
     text-align: left;

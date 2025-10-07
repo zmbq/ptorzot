@@ -38,12 +38,14 @@
     gap: var(--spacing-sm);
     padding: var(--spacing-lg);
     
-    /* Styling */
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+    /* Styling - purple-tinted semi-transparent background */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+    backdrop-filter: blur(10px);
     border-radius: var(--border-radius-lg);
     box-shadow: 
-      0 4px 12px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      0 4px 12px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     
     /* Responsive width */
     width: 100%;
@@ -56,7 +58,7 @@
     font-family: var(--font-family);
     font-size: var(--font-size-md);
     font-weight: 500;
-    color: var(--color-text-secondary);
+    color: rgba(255, 255, 255, 0.95);
     text-align: center;
     
     /* RTL support */
@@ -68,13 +70,13 @@
     font-family: var(--font-family);
     font-size: var(--font-size-xxxl);
     font-weight: 700;
-    color: var(--color-primary);
+    color: rgba(255, 255, 255, 0.95);
     text-align: center;
     line-height: 1;
     
     /* Styling */
     padding: var(--spacing-sm) var(--spacing-lg);
-    background: linear-gradient(135deg, rgba(139, 69, 19, 0.1) 0%, rgba(139, 69, 19, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
     border-radius: var(--border-radius-md);
     min-width: 100px;
   }
