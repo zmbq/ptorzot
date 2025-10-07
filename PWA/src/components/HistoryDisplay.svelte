@@ -5,7 +5,7 @@
 
   interface Props {
     /** Array of plays to display */
-    plays?: OnePlay[];
+    plays?: readonly OnePlay[];
     /** Whether to show the history */
     show?: boolean;
   }

@@ -14,6 +14,7 @@ export {
   playCount,
   targetNumber,
   currentLevel,
+  plays,
 } from './game';
 
 // Settings management

@@ -173,3 +173,10 @@ export const targetNumber = derived(gameStore, ($game) => {
 export const currentLevel = derived(gameStore, ($game) => {
   return $game?.level;
 });
+
+/**
+ * Derived store: Plays made in current game
+ */
+export const plays = derived(gameStore, ($game) => {
+  return $game?.plays || [];
+});
