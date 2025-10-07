@@ -17,10 +17,11 @@
 
   /** Format a single play for display */
   function formatPlay(play: OnePlay): string {
-    const num1 = getPrintedNumber(play.numbersPre[0]);
-    const num2 = getPrintedNumber(play.numbersPre[1]);
+    // Get the actual number values from the indices
+    const num1 = getPrintedNumber(play.numbersPre[play.first]);
+    const num2 = getPrintedNumber(play.numbersPre[play.second]);
     const op = getOpString(play.op);
-    const result = getPrintedNumber(play.numbersPost[0]);
+    const result = getPrintedNumber(play.numbersPost[play.first]);
     
     return `${num1} ${op} ${num2} = ${result}`;
   }

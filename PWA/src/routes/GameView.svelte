@@ -24,8 +24,8 @@
   import { t } from '$utils/i18n';
   import { type Operation, GameLevel } from '$game-engine/index';
 
-  // Selection state
-  let selectedNumbers = $state<number[]>([]);
+  // Selection state - track selected number values and their indices
+  let selectedIndices = $state<number[]>([]);
   let selectedOperation = $state<Operation | null>(null);
 
   // Modal state
@@ -39,12 +39,12 @@
 
   /** Handle number button click */
   function handleNumberClick(index: number) {
-    if (selectedNumbers.includes(index)) {
+    if (selectedIndices.includes(index)) {
       // Deselect
-      selectedNumbers = selectedNumbers.filter((i) => i !== index);
-    } else if (selectedNumbers.length < 2) {
+      selectedIndices = selectedIndices.filter((i) => i !== index);
+    } else if (selectedIndices.length < 2) {
       // Select (max 2 numbers)
-      selectedNumbers = [...selectedNumbers, index];
+      selectedIndices = [...selectedIndices, index];
     }
     vibratePattern('tap', $settingsStore.vibrationEnabled);
   }
@@ -63,18 +63,18 @@
 
   /** Execute the selected play */
   function executePlay() {
-    if (selectedNumbers.length === 2 && selectedOperation !== null) {
-      const [idx1, idx2] = selectedNumbers;
-      const num1 = $currentNumbers[idx1];
-      const num2 = $currentNumbers[idx2];
+    if (selectedIndices.length === 2 && selectedOperation !== null) {
+      const [idx1, idx2] = selectedIndices;
+      const op = selectedOperation;
 
-      gameStore.addPlay(num1, num2, selectedOperation);
-      
-      // Clear selection
-      selectedNumbers = [];
+      // Clear selection FIRST, before the state update
+      selectedIndices = [];
       selectedOperation = null;
 
-      // Check if solved
+      // Execute the play with INDICES (not values!)
+      gameStore.addPlay(idx1, idx2, op);
+      
+      // Check if solved (after state has updated)
       if ($isSolved) {
         isCorrect = true;
         resultValue = $currentNumbers[0];
@@ -86,15 +86,16 @@
   /** Check if play can be executed */
   $effect(() => {
     // Auto-execute when 2 numbers and 1 operation are selected
-    if (selectedNumbers.length === 2 && selectedOperation !== null) {
-      executePlay();
+    if (selectedIndices.length === 2 && selectedOperation !== null) {
+      // Use queueMicrotask to ensure we don't execute during render
+      queueMicrotask(() => executePlay());
     }
   });
 
   /** Handle undo */
   function handleUndo() {
     gameStore.undo();
-    selectedNumbers = [];
+    selectedIndices = [];
     selectedOperation = null;
     vibratePattern('button', $settingsStore.vibrationEnabled);
   }
@@ -102,7 +103,7 @@
   /** Handle new game */
   function handleNewGame() {
     gameStore.newGame($settingsStore.level);
-    selectedNumbers = [];
+    selectedIndices = [];
     selectedOperation = null;
     showResultModal = false;
     vibratePattern('button', $settingsStore.vibrationEnabled);
@@ -112,7 +113,7 @@
   function handleLevelChange(level: GameLevel) {
     settingsStore.setLevel(level);
     gameStore.newGame(level);
-    selectedNumbers = [];
+    selectedIndices = [];
     selectedOperation = null;
     showLevelSelector = false;
     vibratePattern('success', $settingsStore.vibrationEnabled);
@@ -174,7 +175,7 @@
       >
         <NumberButton
           value={number}
-          selected={selectedNumbers.includes(index)}
+          selected={selectedIndices.includes(index)}
           onclick={() => handleNumberClick(index)}
         />
       </div>
