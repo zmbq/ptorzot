@@ -41,15 +41,17 @@
   /** Handle new game */
   function handleNewGame() {
     vibratePattern('button', $settingsStore.vibrationEnabled);
-    onnewgame?.();
-    show = false;
+    if (onnewgame) {
+      onnewgame();
+    }
   }
 
   /** Handle try again */
   function handleTryAgain() {
     vibratePattern('button', $settingsStore.vibrationEnabled);
-    ontryagain?.();
-    show = false;
+    if (ontryagain) {
+      ontryagain();
+    }
   }
 
   /** Handle backdrop click */
@@ -98,10 +100,10 @@
           onclick={handleNewGame}
           type="button"
         >
-          {t('newgame')}
+          משחק חדש
         </button>
         
-        {#if !correct}
+        {#if !correct && ontryagain}
           <button
             class="action-button secondary"
             onclick={handleTryAgain}
@@ -286,6 +288,7 @@
     flex-direction: column;
     gap: var(--spacing-md);
     width: 100%;
+    margin-top: var(--spacing-md);
   }
 
   .action-button {

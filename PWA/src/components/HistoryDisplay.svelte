@@ -21,7 +21,11 @@
     const num1 = getPrintedNumber(play.numbersPre[play.first]);
     const num2 = getPrintedNumber(play.numbersPre[play.second]);
     const op = getOpString(play.op);
-    const result = getPrintedNumber(play.numbersPost[play.first]);
+    
+    // The result is at index 'first' in numbersPost, BUT if second < first,
+    // then after removing second, the first index shifts down by 1
+    const resultIndex = play.second < play.first ? play.first - 1 : play.first;
+    const result = getPrintedNumber(play.numbersPost[resultIndex]);
     
     return `${num1} ${op} ${num2} = ${result}`;
   }

@@ -85,14 +85,14 @@
     justify-content: center;
   }
 
-  .operation-button:hover:not(:disabled) {
+  .operation-button:hover:not(:disabled):not(.selected) {
     transform: translateY(-2px);
     box-shadow: 
       0 5px 10px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
 
-  .operation-button:active:not(:disabled) {
+  .operation-button:active:not(:disabled):not(.selected) {
     transform: translateY(0);
     box-shadow: 
       0 2px 4px rgba(0, 0, 0, 0.2),
@@ -111,6 +111,23 @@
       0 0 0 3px rgba(255, 215, 0, 0.5),
       0 3px 6px rgba(0, 0, 0, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+
+  /* Keep yellow border even when hovering over selected button */
+  .operation-button.selected:hover:not(:disabled) {
+    box-shadow: 
+      0 0 0 3px rgba(255, 215, 0, 0.5),
+      0 5px 10px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: scale(1.05) translateY(-2px);
+  }
+
+  .operation-button.selected:active:not(:disabled) {
+    box-shadow: 
+      0 0 0 3px rgba(255, 215, 0, 0.5),
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transform: scale(1.05);
   }
 

@@ -74,12 +74,14 @@
       // Execute the play with INDICES (not values!)
       gameStore.addPlay(idx1, idx2, op);
       
-      // Check if solved (after state has updated)
-      if ($isSolved) {
-        isCorrect = true;
-        resultValue = $currentNumbers[0];
-        showResultModal = true;
-      }
+      // Use setTimeout to check if solved after state has fully updated
+      setTimeout(() => {
+        if ($isSolved) {
+          isCorrect = true;
+          resultValue = $currentNumbers[0];
+          showResultModal = true;
+        }
+      }, 0);
     }
   }
 

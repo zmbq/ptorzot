@@ -84,14 +84,14 @@
     justify-content: center;
   }
 
-  .number-button:hover:not(:disabled) {
+  .number-button:hover:not(:disabled):not(.selected) {
     transform: translateY(-2px);
     box-shadow: 
       0 6px 12px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
 
-  .number-button:active:not(:disabled) {
+  .number-button:active:not(:disabled):not(.selected) {
     transform: translateY(0);
     box-shadow: 
       0 2px 4px rgba(0, 0, 0, 0.2),
@@ -110,6 +110,23 @@
       0 0 0 3px rgba(255, 215, 0, 0.5),
       0 4px 8px rgba(0, 0, 0, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+
+  /* Keep yellow border even when hovering over selected button */
+  .number-button.selected:hover:not(:disabled) {
+    box-shadow: 
+      0 0 0 3px rgba(255, 215, 0, 0.5),
+      0 6px 12px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: scale(1.05) translateY(-2px);
+  }
+
+  .number-button.selected:active:not(:disabled) {
+    box-shadow: 
+      0 0 0 3px rgba(255, 215, 0, 0.5),
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transform: scale(1.05);
   }
 
