@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { VitePWA } from 'vite-plugin-pwa';
 
@@ -68,5 +68,9 @@ export default defineConfig({
     target: 'esnext',
     minify: 'esbuild',
     sourcemap: false
+  },
+  test: {
+    environment: 'happy-dom',
+    globals: true,
   }
 });
