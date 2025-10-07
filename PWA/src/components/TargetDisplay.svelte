@@ -133,4 +133,48 @@
       font-size: var(--font-size-xl);
     }
   }
+  
+  /* Landscape mode - compact horizontal layout */
+  @media (orientation: landscape) {
+    .target-display {
+      flex-direction: row;
+      justify-content: center;
+      gap: var(--spacing-md);
+      padding: var(--spacing-sm) var(--spacing-md);
+      max-width: none;
+    }
+    
+    .mission-text {
+      font-size: var(--font-size-sm);
+      white-space: nowrap;
+    }
+    
+    .target-number {
+      font-size: var(--font-size-xl);
+      padding: var(--spacing-xs) var(--spacing-md);
+      min-width: 80px;
+    }
+    
+    .level-badge {
+      font-size: var(--font-size-xs);
+      padding: var(--spacing-xxs) var(--spacing-sm);
+    }
+  }
+  
+  @media (orientation: landscape) and (max-height: 500px) {
+    .target-display {
+      padding: var(--spacing-xs) var(--spacing-sm);
+      gap: var(--spacing-sm);
+    }
+    
+    .mission-text {
+      font-size: var(--font-size-xs);
+    }
+    
+    .target-number {
+      font-size: var(--font-size-lg);
+      padding: var(--spacing-xxs) var(--spacing-sm);
+      min-width: 60px;
+    }
+  }
 </style>

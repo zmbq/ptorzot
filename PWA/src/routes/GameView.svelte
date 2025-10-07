@@ -168,72 +168,81 @@
   <!-- Target Display -->
   <TargetDisplay />
 
-  <!-- Numbers Circle -->
-  <div class="numbers-container">
-    {#each $currentNumbers as number, index (index)}
-      {@const pos = getCircularPosition(index, $currentNumbers.length)}
-      <div
-        class="number-position"
-        style="left: {pos.x}%; top: {pos.y}%;"
-      >
-        <NumberButton
-          value={number}
-          selected={selectedIndices.includes(index)}
-          onclick={() => handleNumberClick(index)}
+  <!-- Main game area - reorganizes in landscape -->
+  <div class="game-main">
+    <!-- Left section: Numbers and Operations -->
+    <div class="game-controls">
+      <!-- Numbers Circle -->
+      <div class="numbers-container">
+        {#each $currentNumbers as number, index (index)}
+          {@const pos = getCircularPosition(index, $currentNumbers.length)}
+          <div
+            class="number-position"
+            style="left: {pos.x}%; top: {pos.y}%;"
+          >
+            <NumberButton
+              value={number}
+              selected={selectedIndices.includes(index)}
+              onclick={() => handleNumberClick(index)}
+            />
+          </div>
+        {/each}
+      </div>
+
+      <!-- Operations -->
+      <div class="operations-container">
+        <OperationButton
+          operation="+"
+          selected={selectedOperation === '+'}
+          onclick={() => handleOperationClick('+')}
+        />
+        <OperationButton
+          operation="-"
+          selected={selectedOperation === '-'}
+          onclick={() => handleOperationClick('-')}
+        />
+        <OperationButton
+          operation="*"
+          selected={selectedOperation === '*'}
+          onclick={() => handleOperationClick('*')}
+        />
+        <OperationButton
+          operation="/"
+          selected={selectedOperation === '/'}
+          onclick={() => handleOperationClick('/')}
         />
       </div>
-    {/each}
-  </div>
+    </div>
 
-  <!-- Operations -->
-  <div class="operations-container">
-    <OperationButton
-      operation="+"
-      selected={selectedOperation === '+'}
-      onclick={() => handleOperationClick('+')}
-    />
-    <OperationButton
-      operation="-"
-      selected={selectedOperation === '-'}
-      onclick={() => handleOperationClick('-')}
-    />
-    <OperationButton
-      operation="*"
-      selected={selectedOperation === '*'}
-      onclick={() => handleOperationClick('*')}
-    />
-    <OperationButton
-      operation="/"
-      selected={selectedOperation === '/'}
-      onclick={() => handleOperationClick('/')}
-    />
-  </div>
+    <!-- Right section: History and Actions -->
+    <div class="game-sidebar">
+      <!-- History Display -->
+      <div class="history-wrapper">
+        {#if $plays.length > 0}
+          <HistoryDisplay plays={$plays} />
+        {/if}
+      </div>
 
-  <!-- History Display (flexible scrollable area) -->
-  <div class="history-wrapper">
-    {#if $plays.length > 0}
-      <HistoryDisplay plays={$plays} />
-    {/if}
-  </div>
-
-  <!-- Action Buttons -->
-  <div class="actions-container">
-    <ActionButton
-      label={t('newgame')}
-      variant="primary"
-      onclick={handleNewGame}
-    />
-    <ActionButton
-      label={t('undo')}
-      variant="secondary"
-      onclick={handleUndo}
-      disabled={!$canUndo}
-    />
-    <ActionButton
-      label={t('choose')}
-      variant="secondary"
-      onclick={() => { showLevelSelector = true; }}
-    />
+      <!-- Action Buttons -->
+      <div class="actions-container">
+        <ActionButton
+          label={t('newgame')}
+          variant="primary"
+          onclick={handleNewGame}
+        />
+        <ActionButton
+          label={t('undo')}
+          variant="secondary"
+          onclick={handleUndo}
+          disabled={!$canUndo}
+        />
+        <ActionButton
+          label={t('choose')}
+          variant="secondary"
+          onclick={() => { showLevelSelector = true; }}
+        />
+      </div>
+    </div>
   </div>
 
   <!-- Modals -->
@@ -282,6 +291,31 @@
     overflow: hidden;
   }
 
+  .game-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.5rem, 1.5vh, 0.75rem);
+    width: 100%;
+    flex: 1;
+  }
+
+  .game-controls {
+    /* Wrapper for numbers and operations */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.5rem, 1.5vh, 0.75rem);
+  }
+
+  .game-sidebar {
+    /* Wrapper for history and actions */
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.5rem, 1.5vh, 0.75rem);
+    width: 100%;
+  }
+
   .numbers-container {
     /* Container for elliptical layout - wider than tall */
     position: relative;
@@ -305,6 +339,15 @@
     flex-wrap: wrap;
     max-width: 400px;
     flex-shrink: 0;
+  }
+
+  .game-main {
+    /* Container for numbers and operations - reflows in landscape */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.5rem, 1.5vh, 0.75rem);
+    width: 100%;
   }
 
   .history-wrapper {
@@ -372,6 +415,85 @@
   @media (max-height: 600px) {
     .numbers-container {
       height: min(22vh, 130px);
+    }
+  }
+  
+  /* Landscape mode - horizontal layout */
+  @media (orientation: landscape) {
+    .game-view {
+      gap: clamp(0.5rem, 1vh, 0.75rem);
+      padding: clamp(0.5rem, 1vh, 0.75rem);
+    }
+    
+    .game-main {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: stretch;
+      gap: clamp(1rem, 3vw, 2rem);
+      flex: 1;
+      width: 100%;
+    }
+    
+    .game-controls {
+      /* Left side: numbers with operations to the right - wider */
+      flex: 0 0 auto;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(1rem, 2.5vw, 1.5rem);
+      width: 58%; /* Take up more space */
+    }
+    
+    .game-sidebar {
+      /* Right side: history and actions - narrower */
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(0.5rem, 1.5vh, 0.75rem);
+      min-width: 0;
+      width: 38%; /* Leave room for left side */
+    }
+    
+    .numbers-container {
+      width: min(45vw, 350px);
+      height: min(50vh, 220px);
+      flex-shrink: 0;
+    }
+    
+    .operations-container {
+      flex-direction: column;
+      gap: clamp(0.5rem, 1.5vh, 0.75rem);
+      max-width: none;
+      flex-shrink: 0;
+    }
+    
+    .history-wrapper {
+      margin-top: 0;
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+    
+    .actions-container {
+      margin-top: 0;
+      flex: 0 0 auto;
+    }
+  }
+  
+  /* Landscape + small height */
+  @media (orientation: landscape) and (max-height: 500px) {
+    .game-view {
+      gap: clamp(0.25rem, 0.5vh, 0.5rem);
+      padding: clamp(0.25rem, 0.5vh, 0.5rem);
+    }
+    
+    .numbers-container {
+      width: min(40vw, 300px);
+      height: min(60vh, 200px);
+    }
+    
+    .history-wrapper {
+      flex: 1 1 auto;
+      min-height: 0;
     }
   }
 </style>
