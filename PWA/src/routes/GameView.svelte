@@ -8,8 +8,8 @@
     canUndo,
     currentLevel,
     plays,
-  } from '$stores/game';
-  import { settingsStore } from '$stores/settings';
+    settingsStore,
+  } from '$stores/index';
   import {
     NumberButton,
     OperationButton,

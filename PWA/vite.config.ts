@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitest/config';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { VitePWA } from 'vite-plugin-pwa';
+import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -61,6 +62,15 @@ export default defineConfig({
       }
     })
   ],
+  resolve: {
+    alias: {
+      $lib: path.resolve('./src/lib'),
+      $components: path.resolve('./src/components'),
+      '$game-engine': path.resolve('./src/game-engine'),
+      $stores: path.resolve('./src/stores'),
+      $utils: path.resolve('./src/utils'),
+    }
+  },
   server: {
     port: 3000
   },
