@@ -49,6 +49,14 @@ export const LEVEL_CONFIGS: Record<GameLevel, LevelConfig> = {
     nameLong: 'תרגילים קשים', // Hard exercises
     color: 'red',
   },
+  [GameLevel.VeryHard]: {
+    level: GameLevel.VeryHard,
+    minTarget: 100,
+    maxTarget: 150,
+    name: 'קשה מאד', // Very Hard in Hebrew
+    nameLong: 'תרגילים קשים מאד', // Very hard exercises
+    color: 'red',
+  },
 };
 
 /**
@@ -152,5 +160,10 @@ export function getLevelConfig(level: GameLevel): LevelConfig {
  * Gets all level configurations
  */
 export function getAllLevelConfigs(): LevelConfig[] {
-  return [LEVEL_CONFIGS[GameLevel.Easy], LEVEL_CONFIGS[GameLevel.Medium], LEVEL_CONFIGS[GameLevel.Hard]];
+  return [
+    LEVEL_CONFIGS[GameLevel.Easy],
+    LEVEL_CONFIGS[GameLevel.Medium],
+    LEVEL_CONFIGS[GameLevel.Hard],
+    LEVEL_CONFIGS[GameLevel.VeryHard],
+  ];
 }

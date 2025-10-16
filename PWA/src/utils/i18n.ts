@@ -37,6 +37,8 @@ export type TranslationKey =
   | 'level2_long'
   | 'level3_short'
   | 'level3_long'
+  | 'level4_short'
+  | 'level4_long'
   | 'levels_title'
   | 'choose'
   | 'cancel'
@@ -76,6 +78,8 @@ const he: Translations = {
   level2_long: 'רמה בינונית',
   level3_short: 'קשה',
   level3_long: 'תרגילים קשים',
+  level4_short: 'קשה מאד',
+  level4_long: 'תרגילים קשים מאד',
   levels_title: 'רמת המשחק',
   choose: 'שינוי רמה',
   cancel: 'ביטול',
@@ -111,6 +115,8 @@ const en: Translations = {
   level2_long: 'Medium Level',
   level3_short: 'Hard',
   level3_long: 'Hard Exercises',
+  level4_short: 'Very Hard',
+  level4_long: 'Very Hard Exercises',
   levels_title: 'Game Level',
   choose: 'Change Level',
   cancel: 'Cancel',

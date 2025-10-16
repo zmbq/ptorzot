@@ -14,6 +14,7 @@ describe('levels', () => {
       expect(LEVEL_CONFIGS[GameLevel.Easy]).toBeDefined();
       expect(LEVEL_CONFIGS[GameLevel.Medium]).toBeDefined();
       expect(LEVEL_CONFIGS[GameLevel.Hard]).toBeDefined();
+      expect(LEVEL_CONFIGS[GameLevel.VeryHard]).toBeDefined();
     });
 
     it('has correct target ranges', () => {
@@ -25,18 +26,22 @@ describe('levels', () => {
 
       expect(LEVEL_CONFIGS[GameLevel.Hard].minTarget).toBe(60);
       expect(LEVEL_CONFIGS[GameLevel.Hard].maxTarget).toBe(120);
+      expect(LEVEL_CONFIGS[GameLevel.VeryHard].minTarget).toBe(100);
+      expect(LEVEL_CONFIGS[GameLevel.VeryHard].maxTarget).toBe(150);
     });
 
     it('has correct colors', () => {
       expect(LEVEL_CONFIGS[GameLevel.Easy].color).toBe('green');
       expect(LEVEL_CONFIGS[GameLevel.Medium].color).toBe('yellow');
       expect(LEVEL_CONFIGS[GameLevel.Hard].color).toBe('red');
+      expect(LEVEL_CONFIGS[GameLevel.VeryHard].color).toBe('red');
     });
 
     it('has Hebrew names', () => {
       expect(LEVEL_CONFIGS[GameLevel.Easy].name).toBe('קל');
       expect(LEVEL_CONFIGS[GameLevel.Medium].name).toBe('בינוני');
       expect(LEVEL_CONFIGS[GameLevel.Hard].name).toBe('קשה');
+      expect(LEVEL_CONFIGS[GameLevel.VeryHard].name).toBe('קשה מאד');
     });
   });
 
@@ -178,10 +183,11 @@ describe('levels', () => {
     it('returns all three level configs', () => {
       const configs = getAllLevelConfigs();
 
-      expect(configs).toHaveLength(3);
+      expect(configs).toHaveLength(4);
       expect(configs[0].level).toBe(GameLevel.Easy);
       expect(configs[1].level).toBe(GameLevel.Medium);
       expect(configs[2].level).toBe(GameLevel.Hard);
+      expect(configs[3].level).toBe(GameLevel.VeryHard);
     });
   });
 
